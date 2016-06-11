@@ -128,11 +128,15 @@
 
                 this.torrentCreator.Create(fileSource, torrentPath);
 
-                this.StartTorrent(torrentFileName);
-
                 this.torrentsToUpload.Add(torrentFileName);
 
                 this.io.Write(" Done!", Colors.Green);
+            }
+
+            // Add torrents to the local client
+            foreach (var torrent in this.torrentsToUpload)
+            {
+                this.StartTorrent(torrent);
             }
         }
 
